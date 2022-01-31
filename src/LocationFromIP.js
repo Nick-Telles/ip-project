@@ -1,6 +1,8 @@
 // dependencies / things imported
 import { LitElement, html, css } from 'lit';
 import { UserIP } from './UserIP.js';
+import '@lrnwebcomponents/wikipedia-query/wikipedia-query.js';
+
 
 export class LocationFromIP extends LitElement {
   static get tag() {
@@ -11,8 +13,10 @@ export class LocationFromIP extends LitElement {
     super();
     this.UserIpInstance = new UserIP();
     this.locationEndpoint = 'https://freegeoip.app/json/';
-    this.long = 10.305385;
-    this.lat = 77.923029;
+    this.long = null;
+    this.lat = null;
+    this.city = null;
+    this.state = null;
   }
 
   // I'm not really sure what the "reflect" is doing other than its a boolean value
@@ -48,8 +52,13 @@ export class LocationFromIP extends LitElement {
         // this.long + this.lat will be capturing where the user is based on IP
         // (using properties w/ type number)
         // not entirely sure that this part is correct
-        this.long = data.long;
-        this.lat = data.lat;
+        this.long = data.longitude;
+        this.lat = data.latitude;
+        this.city = data.city;
+        this.region = data.region_name;
+        this.location = `${this.city}, ${this.region}`;
+        console.log(`${this.lat} ${this.long}`);
+        console.log(`Location: ${this.location}`);
 
         return data;
       });
@@ -73,9 +82,16 @@ export class LocationFromIP extends LitElement {
     // this function runs every time a properties() declared variable changes
     // this means you can make new variables and then bind them this way if you like
 
-    const url = `https://maps.google.com/maps?q=${this.long},${this.lat}&t=&z=15&ie=UTF8&iwloc=&output=embed`;
+    const url = `https://maps.google.com/maps?q=${this.lat},${this.long}&t=&z=15&ie=UTF8&iwloc=&output=embed`;
+    return html`
+      <iframe title="Where you are" src="${url}"></iframe>
+      <p><a href= "https://www.google.com/maps/@${this.lat},${this.long},14z"
+      <p style="text-align:left">Show in Google Maps</a></p>
 
-    return html`<iframe title="Where you are" src="${url}"></iframe> `;
+      <wikipedia-query search="${this.location}"></wikipedia-query>
+      <wikipedia-query search="${this.city}"></wikipedia-query>
+      <wikipedia-query search="${this.region}"></wikipedia-query>
+    `;
   }
 }
 
