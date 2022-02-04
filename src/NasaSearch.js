@@ -35,12 +35,9 @@ class NasaSearch extends LitElement {
         });
       }
 
-      updateterm(){
-        let term = document.querySelector("#term").value;
-      }
-
       async getNasaData() {
         //let term = document.querySelector("term").value; 
+        //document.querySelector("term").term = document.querySelector("term").value;
         return fetch(
             "https://images-api.nasa.gov/search?media_type=image&q=" + this.term
             //adding in the search term to the end of the url for updated search
@@ -89,7 +86,6 @@ class NasaSearch extends LitElement {
     
       render() {
         return html`
-          <h1>Search for NASA Images</h1>
           ${this.NasaImages.map(
             item => html`
               <accent-card imagesrc="${item.imagesrc}">
