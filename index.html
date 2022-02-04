@@ -36,12 +36,14 @@
    <script type="module">
     import "./src/NasaSearch.js";
 
-    document.querySelector("nasa-image-search").addEventListener("results-changed", (e) => {
-      console.log(e.detail);
-      document.querySelector("#term").term = e.detail.value.length;
-    });
     //let term = document.querySelector("term").value; 
-    //document.querySelector("#nasatagid").term = document.querySelector("#terminput").value;
+        //our original query selector
+    //document.querySelector("#nasatagid").term = document.querySelector("#terminput").value; 
+        //recommended query selector, not sure what nasatagid is representing not sure why two query selectors are set equal to eachother
+
+//this is from stack overflow sent by professor:
+//var selectElement = document.querySelector('input[name="term"]');
+//var selectedValue = selectElement.value;
 </script>
 <br>
 <nasa-image-search></nasa-image-search>
