@@ -38,7 +38,7 @@ export class NasaImage extends LitElement {
       }
     });
   }
-
+  //I dont know why this small block of code is unreachable
   getNASAData() {
     return fetch(
       'https://images-api.nasa.gov/search?q=moon%20landing&media_type=image'
@@ -73,9 +73,14 @@ export class NasaImage extends LitElement {
 
   
   }
+  //also unsure why the render is unreachable, are we just missing a bracket or something?
   render() {
-    return html `
-    `${this.nasaResults.map{
+    return html    
+<ul>
+    <><li>${item.title}</li><li>${item.imagesrc}</li><li>${item.description}</li></>
+</ul>
+    ${this.nasaResults.map(
+    )
       item => html `
         <accent-card
           image-src="${item.imagesrc}"
@@ -84,10 +89,11 @@ export class NasaImage extends LitElement {
           style="max-width:600px;"
           >
             <><div slot="heading">${item.title}</div><div slot="content">${item.description}</div></>
+
+
           </accent-card>
     )}
   }
-  
 
 
 customElements.define('nasa-image-search', NasaImage);
