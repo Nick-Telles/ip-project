@@ -43,14 +43,13 @@ export class NasaImage extends LitElement {
   async getNASAData() {
     return fetch(
       'https://images-api.nasa.gov/search?q=moon%20landing&media_type=image'
-    
-      .then(resp => {
+    ).then(resp => {
         if (resp.ok) {
           return resp.json();
         }
         return false;
-      }
-      ,then(data => {
+      })
+      .then(data => {
         console.log(data);
         this.nasaResults = [];
         
@@ -68,16 +67,12 @@ export class NasaImage extends LitElement {
           }
         });
         return data;
-      }
-  
-
-
-  
+      });
+  }
   
   //also unsure why the render is unreachable, are we just missing a bracket or something?
-  ,render,() => {
+  render() {
     return html`
-  
   <ul>
       <><li>${item.title}</li><li>${item.imagesrc}</li><li>${item.description}</li></>
   </ul>
@@ -90,13 +85,15 @@ export class NasaImage extends LitElement {
           horizontal
           style="max-width:600px;"
           >
-            <><div slot="heading">${item.title}</div><div slot="content">${item.description}</div></>
+            <div slot="heading">${item.title}</div><div slot="content">${item.description}</div></>
 
 
           </accent-card>
     `
     )}
-    `,
+    `;
+  }
+}
   
     
 
