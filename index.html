@@ -25,28 +25,43 @@
 </head>
 
 <body>
+  <header>
 <h1>Search for NASA Images</h1>
+</header>
+<section>
 <label>What would you like to search on NASA?</label>
    <input type="text" id="term"></input>
+   <label for="term">Search Input</label>
    <br>
+   <label for="start-year" id="date">Start year</label>
+
+   <input type="datetime-local" id="date"
+          name="start-year" value="2018-06-12T19:30"
+          min="1999-01-01T00:00" max="2022-02-09T00:00">
+    <br>
+    <label for="end-year">End year</label>
+
+    <input type="datetime-local" id="meeting-time"
+                 name="end-year" value="2018-06-12T19:30"
+                 min="1999-01-01T00:00" max="2022-02-09T00:00">
    <br>
-   <button onclick="updateterm();">Search</button>
+   <button id = "button">Search</button>
    <br>
+  </section>
+
+  <section>
+ 
+  </section>
 
    <script type="module">
     import "./src/NasaSearch.js";
 
-    //let term = document.querySelector("term").value; 
-        //our original query selector
-    //document.querySelector("#nasatagid").term = document.querySelector("#terminput").value; 
-        //recommended query selector, not sure what nasatagid is representing not sure why two query selectors are set equal to eachother
-
-//this is from stack overflow sent by professor:
-//var selectElement = document.querySelector('input[name="term"]');
-//var selectedValue = selectElement.value;
-</script>
+    document.querySelector("#button").addEventListener("click",(e) =>
+    {document.querySelector("nasa-image-search").updateTerm(document.querySelector("#term").value)
+   });
+    </script>
 <br>
 <nasa-image-search></nasa-image-search>
-</body>
 
+</body>
 </html>
