@@ -97,4 +97,4 @@ export class NasaImage extends LitElement {
   
     
 
-customElements.define('nasa-image-search',tag, NasaImage);
+customElements.define('nasa-image-search'.tag, NasaImage);
