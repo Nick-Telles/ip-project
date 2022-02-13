@@ -13,6 +13,7 @@
 //     return 'user-ip';
 //   }
 
+
 //   // HTMLElement life-cycle, built in; use this for setting defaults
 //   constructor() {
 //     super();
@@ -27,6 +28,33 @@
 //     this.ipLookUp = 'https://ip-fast.com/api/ip/?format=json&location=True';
 //   }
 
+  // HTMLElement life-cycle, built in; use this for setting defaults
+  constructor() {
+    super();
+    // default values
+    this.ip = null;
+    this.location = null;
+    // variables can be stored on "this" as the class we're working on is like a
+    // Java or other Object Oriented Programming Language
+    // so for this one, we're storing a reference to the API endpoint
+    // so that if it ever changed it would be easier to update
+
+    this.ipLookUp = 'https://ip-fast.com/api/ip/?format=json&location=True';
+  }
+
+  // properties that you wish to use as data in HTML, CSS, and the updated life-cycle
+  static get properties() {
+    return {
+      ip: { type: String, reflect: true },
+
+      // retrieving location stuff
+      country: { type: String, reflect: true },
+      city: { type: String, reflect: true },
+      location: { type: String, reflect: true },
+    };
+  }
+
+
 //   // properties that you wish to use as data in HTML, CSS, and the updated life-cycle
 //   static get properties() {
 //     return {
@@ -38,6 +66,7 @@
 //       location: { type: String, reflect: true },
 //     };
 //   }
+
 
 //   // updated fires every time a property defined above changes
 //   // this allows you to react to variables changing and use javascript to perform logic
@@ -75,6 +104,32 @@
 //     });
 //   }
 
+  /**
+   * Async, so run this code in order though in this example
+   * it'll run regardless since we're not doing other actions
+   */
+  async updateUserIP() {
+    return fetch(this.ipLookUp)
+      .then(resp => {
+        if (resp.ok) {
+          return resp.json();
+        }
+        return false;
+      })
+      .then(data => {
+        // this works for the location, but the map is not accurate??
+        this.ip = data.ip;
+        this.city = data.city;
+        this.country = data.country;
+
+        // trying to output them in one line
+        // this.location = `${data.city}, ${data.country}`;
+
+        return data;
+      });
+  }
+
+
 //   // Lit life-cycle; this fires the 1st time the element is rendered on the screen
 //   // this is a sign it is safe to make calls to this.shadowRoot
 //   firstUpdated(changedProperties) {
@@ -91,6 +146,7 @@
 //       this.updateUserIP();
 //     }
 //   }
+
 
 //   /**
 //    * Async, so run this code in order though in this example
@@ -109,6 +165,22 @@
 //         this.ip = data.ip;
 //         this.city = data.city;
 //         this.country = data.country;
+
+  // this serves very little purpose but at least we're rendering the info
+  render() {
+    // im a little confused here, and im pretty sure I made some errors trying to get the location stuff to work correctly
+    return html` <ul>
+      <li><strong class="ipaddress">IP address: </strong> ${this.ip}</li>
+      <li><strong class="country">Country: </strong> ${this.country}</li>
+      <li><strong class="city">City: </strong> ${this.city}</li>
+
+      <li><strong class="location">Location: </strong> ${this.location}</li>
+
+      <li></li>
+    </ul>`;
+  }
+}
+
 
 //         // trying to output them in one line
 //         // this.location = `${data.city}, ${data.country}`;
