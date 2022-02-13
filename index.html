@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 
@@ -59,10 +58,6 @@
   </section>
 
    <script type="module">
-    import "./src/nasa-image.js";
-
-
-   <script type="module">
     import "./src/NasaSearch.js";
 
     document.querySelector("#button").addEventListener("click",(e) =>
@@ -75,8 +70,8 @@
 
    document.getElementById('readData').addEventListener('box', e => {
         e.currentTarget.checked
-          ? (document.querySelector("nasa-image-search").listOnly = true)
-          : (document.querySelector("nasa-image-search").listOnly = false);
+          ? (document.querySelector('#images').listOnly = true)
+          : (document.querySelector('#images').listOnly = false);
       });
 
 
