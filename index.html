@@ -45,11 +45,13 @@
    <br>
    <button id = "button">Search</button>
    <br>
+
    <br>
    <div>
     <label for = "readData" class = "label">Return Data Only</label>
     <input id = "readData" type = "checkbox" />
    </div>
+
   </section>
 
   <section>
@@ -59,10 +61,15 @@
    <script type="module">
     import "./src/nasa-image.js";
 
+
+   <script type="module">
+    import "./src/NasaSearch.js";
+
     document.querySelector("#button").addEventListener("click",(e) =>
     {document.querySelector("nasa-image-search").updateTerm(document.querySelector("#term").value);
     document.querySelector("nasa-image-search").updateTerm(document.querySelector("#startYear").value);
     document.querySelector("nasa-image-search").updateTerm(document.querySelector("#endYear").value)
+
 
    });
 
@@ -71,6 +78,9 @@
           ? (document.querySelector("nasa-image-search").listOnly = true)
           : (document.querySelector("nasa-image-search").listOnly = false);
       });
+
+
+   });
 
     </script>
 <br>
