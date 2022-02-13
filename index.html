@@ -1,55 +1,3 @@
-<!-- <!doctype html>
-<html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="Description" content="Put your description here.">
-  <base href="/">
-  <style>
-    html,
-    body {
-      margin: 0;
-      padding: 10px;
-      font-family: sans-serif;
-    }
-    nasa-image-search {
-      background-color: white;
-    }
-    nasa-image-search[load-data] {
-      background-color: lightblue;
-      transition: 1s ease-in-out background-color;
-    }
-  </style>
-  <title>Lab 4/5</title>
-</head>
-
-<body>
-<h1>Search for NASA Images</h1>
-<label>What would you like to search on NASA?</label>
-   <input type="text" id="term"></input>
-   <br>
-   <br>
-   <button onclick="updateterm();">Search</button>
-   <br>
-
-   <script type="module">
-    import "./src/NasaSearch.js";
-
-    //let term = document.querySelector("term").value; 
-        //our original query selector
-    document.querySelector("#nasatagid").term = document.querySelector("#terminput").value; 
-        //recommended query selector, not sure what nasatagid is representing not sure why two query selectors are set equal to eachother
-
-//this is from stack overflow sent by professor:
-//var selectElement = document.querySelector('input[name="term"]');
-//var selectedValue = selectElement.value;
-</script>
-<br>
-<nasa-image-search></nasa-image-search>
-</body>
-
-</html> -->
 
 <!doctype html>
 <html lang="en">
@@ -104,7 +52,7 @@
   </section>
 
    <script type="module">
-    import "./src/NasaSearch.js";
+    import "./src/nasa-image.js";
 
     document.querySelector("#button").addEventListener("click",(e) =>
     {document.querySelector("nasa-image-search").updateTerm(document.querySelector("#term").value);
