@@ -58,7 +58,15 @@
     {document.querySelector("nasa-image-search").updateTerm(document.querySelector("#term").value);
     document.querySelector("nasa-image-search").updateTerm(document.querySelector("#startYear").value);
     document.querySelector("nasa-image-search").updateTerm(document.querySelector("#endYear").value)
+
    });
+
+   document.getElementById('readData').addEventListener('box', e => {
+        e.currentTarget.checked
+          ? (document.querySelector('#images').listOnly = true)
+          : (document.querySelector('#images').listOnly = false);
+      });
+
     </script>
 <br>
 <nasa-image-search></nasa-image-search>
