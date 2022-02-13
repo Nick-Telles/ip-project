@@ -44,7 +44,7 @@ export class NasaImage extends LitElement {
   
   async getNASAData() {
     return fetch(
-      'https://images-api.nasa.gov/search?q=moon%20landing&media_type=image'
+      `https://images-api.nasa.gov/search?media_type=image&q=${this.term}`
     ).then(resp => {
         if (resp.ok) {
           return resp.json();
