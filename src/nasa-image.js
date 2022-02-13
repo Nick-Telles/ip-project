@@ -12,6 +12,7 @@ export class NasaImage extends LitElement {
     this.nasaResults = [];
     this.loadData = false;
     this.view = 'accent-card';
+    this.listView = false;
   }
 
 
@@ -20,6 +21,7 @@ export class NasaImage extends LitElement {
       nasaResults: { type: Array },
       loadData: { type: Boolean, reflect: true, attribute: 'load-data' },
       view: { type: String, reflect: true },
+      listView: { type: Boolean, reflect: true, attribute: 'list-view'},
     
     };
   }
@@ -39,7 +41,7 @@ export class NasaImage extends LitElement {
       }
     });
   }
-  //I dont know why this small block of code is unreachable
+  
   async getNASAData() {
     return fetch(
       'https://images-api.nasa.gov/search?q=moon%20landing&media_type=image'
@@ -70,7 +72,7 @@ export class NasaImage extends LitElement {
       });
   }
   
-  //also unsure why the render is unreachable, are we just missing a bracket or something?
+  
   render() {
     return html`
   <ul>
