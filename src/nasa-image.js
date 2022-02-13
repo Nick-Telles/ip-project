@@ -95,25 +95,23 @@ class NasaImage extends LitElement {
   }
 
   render() {
-    
-    return html` 
+    return html`${this.listView === true
+    ? html`
     <ul>
-      
-      <><li>${item.title}</li><li>${item.imagesrc}</li><li>${item.description}</li></>
-  </ul>
-  
-      ${this.NasaImages.map(
+        ${this.NasaImages.map(
+            item => html`
+        <><li>${item.title}</li><li>${item.imagesrc}</li><li>${item.description}</li></>
+        `
+        )}
+    </ul>
+    `
+    : html` ${this.NasaImages.map(
         item => html`
-          <accent-card image-src="${item.imagesrc}">
+        <accent-card image-src="${item.imagesrc}">
             <div slot="heading">${item.title}</div>
             <div slot="content">${item.description}</div>
-            <div slot="heading">${item.title}</div><div slot="content">${item.description}</div></>
-            
-          </accent-card>
-        `
-        
-      )}
-    `;
-  }
+        </accent-card>`
+    )}`}`;
+    }
 }
 customElements.define('nasa-image-search', nasa-image);
