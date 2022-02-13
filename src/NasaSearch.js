@@ -6,14 +6,16 @@ class NasaSearch extends LitElement {
     super();
     this.NasaImages = [];
     this.term = '';
+    this.startYear = 2000;
+    this.endYear = 2022;
   }
 
   static get properties() {
     return {
       term: { type: String, reflect: true },
-      NasaImages: {
-        type: Array,
-      },
+      NasaImages: { type: Array },
+      startYear: { type: Number },
+      endYear: { type: Number },
     };
   }
 

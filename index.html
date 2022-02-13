@@ -33,17 +33,14 @@
    <input type="text" id="term"></input>
    <label for="term">Search Input</label>
    <br>
-   <label for="start-year" id="date">Start year</label>
-
-   <input type="datetime-local" id="date"
-          name="start-year" value="2018-06-12T19:30"
-          min="1999-01-01T00:00" max="2022-02-09T00:00">
-    <br>
-    <label for="end-year">End year</label>
-
-    <input type="datetime-local" id="meeting-time"
-                 name="end-year" value="2018-06-12T19:30"
-                 min="1999-01-01T00:00" max="2022-02-09T00:00">
+<br>
+   <input id="startYear" type="text">
+   <label for="startYear">Start year</label>
+  <br>
+  <br>
+  <input id="endYear" type="text">
+  <label for="endYear">End year</label>
+   <br>
    <br>
    <button id = "button">Search</button>
    <br>
@@ -57,7 +54,9 @@
     import "./src/NasaSearch.js";
 
     document.querySelector("#button").addEventListener("click",(e) =>
-    {document.querySelector("nasa-image-search").updateTerm(document.querySelector("#term").value)
+    {document.querySelector("nasa-image-search").updateTerm(document.querySelector("#term").value);
+    document.querySelector("nasa-image-search").updateTerm(document.querySelector("#startYear").value);
+    document.querySelector("nasa-image-search").updateTerm(document.querySelector("#endYear").value)
    });
     </script>
 <br>
